@@ -66,28 +66,15 @@
       <button onclick="myFunction()" class="dropbtn">Search a customer</button>
       <button onclick="myFunction()" class="dropbtn">Download list of customers</button>
 </div>
+    
     <script src = "dropdown.js"></script>
     
 
     <p>&nbsp;</p>
     <div id="map"></div>
-    <script>
-
-      function initMap() {
-        var myLatLng = {lat: 29.9695, lng: 76.8783};
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: myLatLng
-        });
-
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'You are here!'
-        });
-      }
-    </script>
+    
+    <script src = "map.js"></script>
+    
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM6K6poUKbqbzgbsY8b8OFDbTeWmnZCtw&callback=initMap">
     </script>
