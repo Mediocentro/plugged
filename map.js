@@ -26,7 +26,7 @@ function initMap() {
         // Origins, anchor positions and coordinates of the marker increase in the X
         // direction to the right and in the Y direction down.
         var image = {
-          url: 'electricmeter.jpg',
+          url: 'https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/64x64/plain/parking_meter.png',
           // This marker is 20 pixels wide by 32 pixels high.
           size: new google.maps.Size(20, 32),
           // The origin for this image is (0, 0).
