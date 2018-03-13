@@ -1,18 +1,18 @@
-var avglat = 0;
-for (var i = 0; i < meters.length; i++){
-  avglat = avglat + meters[i][1];
-} 
-avglat = avglat/(meters.length);
-var avglon = 0;
-for (var i = 0; i < meters.length; i++){
-  avglon = avglon + meters[i][2];
-} 
-avglat = avglon/(meters.length);
+//var avglat = 0;
+//for (var i = 0; i < meters.length; i++){
+//  avglat = avglat + meters[i][1];
+//} 
+//avglat = avglat/(meters.length);
+//var avglon = 0;
+//for (var i = 0; i < meters.length; i++){
+// avglon = avglon + meters[i][2];
+//} 
+//avglat = avglon/(meters.length);
 
 function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
-          center: {lat: avglat, lng: avglon}
+          center: {lat: 29.9695, lng: 76.8783}
         });
 
         setMarkers(map);
