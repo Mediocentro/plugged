@@ -1,32 +1,21 @@
-//var avglat = 0;
-//for (var i = 0; i < meters.length; i++){
-//  avglat = avglat + meters[i][1];
-//} 
-//avglat = avglat/(meters.length);
-//var avglon = 0;
-//for (var i = 0; i < meters.length; i++){
-// avglon = avglon + meters[i][2];
-//} 
-//avglat = avglon/(meters.length);
-
 function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
-          center: {lat: 29.9695, lng: 76.8783}
+          center: {lat: 29.9695, lng: 76.8383}
         });
 
-       // setMarkers(map);
+        setMarkers(map);
       }
 
       // Data for the markers consisting of a name, a LatLng and a zIndex for the
       // order in which these markers should display on top of each other.
-      // var meters = [
-      //   ['NIT Kurukshetra', 29.948685, 76.817305, 1],
-      //   ['Kurukshetra University', 29.959282, 76.817133, 2],
-      //   ['Panorama', 29.966012, 76.833913, 3],
-      //   ['Kessel Mall', 29.970387, 76.836437, 4],
-      //   ['Kalpana Chawal Planetarium', 29.961971, 76.790150, 5]
-      // ];
+      var meters = [
+        ['NIT Kurukshetra', 29.948685, 76.817305, 1],
+        ['Kurukshetra University', 29.959282, 76.817133, 2],
+        ['Panorama', 29.966012, 76.833913, 3],
+        ['Kessel Mall', 29.970387, 76.836437, 4],
+        ['Kalpana Chawal Planetarium', 29.961971, 76.790150, 5]
+      ];
 
       function setMarkers(map) {
         // Adds markers to the map.
