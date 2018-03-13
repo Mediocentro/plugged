@@ -15,7 +15,7 @@ function initMap() {
           center: {lat: 29.9695, lng: 76.8783}
         });
 
-        setMarkers(map);
+       // setMarkers(map);
       }
 
       // Data for the markers consisting of a name, a LatLng and a zIndex for the
