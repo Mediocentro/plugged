@@ -15,6 +15,7 @@ firebaseCoords.on('value', function(snapshot){
 		meters[j][2] = data.child("GPS_lon").val();
 		j++;
 	});
+	setMarkers(meters);
 console.log(meters);
 	// for (i = 0; i<meters.length; i++){
 	// 	$("#test").append("<tr><td>" + meters[i][0] + "</td><td>" + meters[i][1] + "</td><td>" 
