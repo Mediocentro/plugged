@@ -45,8 +45,8 @@ function initMap(){
             icon: image,
             shape: shape,
             title: CoordTitle,
-            zIndex: j+1;
+            zIndex: j+1
           });  
-        j++;})
+        j++;});
       }     
 }
