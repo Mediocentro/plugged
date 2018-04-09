@@ -5,7 +5,7 @@ function initMap(){
           center: new google.maps.LatLng(29.9695, 76.8783),
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           disableDoubleClickZoom: true,
-          mapTypeControl: false
+          mapTypeControl: false,
           streetViewControl: false
 
         });
