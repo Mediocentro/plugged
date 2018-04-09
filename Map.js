@@ -13,22 +13,40 @@ function initMap(){
        
        var image = {
           meterOn:{
-            icon: 'http://maps.google.com/mapfiles/kml/paddle/grn-circle.png'
+            url: 'https://maps.google.com/mapfiles/kml/paddle/grn-circle.png',
+            size: new.google.maps.Size(20,32),
+            origin: new.google.maps.Point(0,0),
+            anchor: new.google.maps.Point(0,32)
           },
           meterOff:{
-            icon: 'http://maps.google.com/mapfiles/kml/paddle/blu-circle.png'
+            url: 'https://maps.google.com/mapfiles/kml/paddle/blu-circle.png'
+            size: new.google.maps.Size(20,32),
+            origin: new.google.maps.Point(0,0),
+            anchor: new.google.maps.Point(0,32)
           },
           meterCritical:{
-            icon: 'http://maps.google.com/mapfiles/kml/paddle/red-circle.png'
+            url: 'https://maps.google.com/mapfiles/kml/paddle/red-circle.png'
+            size: new.google.maps.Size(20,32),
+            origin: new.google.maps.Point(0,0),
+            anchor: new.google.maps.Point(0,32)
           },
           nodeOn:{
-            icon: 'http://maps.google.com/mapfiles/kml/paddle/grn-blank-lv.png'
+            url: 'https://maps.google.com/mapfiles/kml/paddle/grn-blank-lv.png'
+            size: new.google.maps.Size(20,32),
+            origin: new.google.maps.Point(0,0),
+            anchor: new.google.maps.Point(0,32)      
           },
           nodeOff:{
-            icon: 'http://maps.google.com/mapfiles/kml/paddle/blu-blank-lv.png'
+            url: 'https://maps.google.com/mapfiles/kml/paddle/blu-blank-lv.png'
+            size: new.google.maps.Size(20,32),
+            origin: new.google.maps.Point(0,0),
+            anchor: new.google.maps.Point(0,32)      
           },
           nodeCritical:{
-            icon: 'http://maps.google.com/mapfiles/kml/paddle/red-blank-lv.png'
+            url: 'https://maps.google.com/mapfiles/kml/paddle/red-blank-lv.png'
+            size: new.google.maps.Size(20,32),
+            origin: new.google.maps.Point(0,0),
+            anchor: new.google.maps.Point(0,32)      
           }
        }; 
 
@@ -59,7 +77,7 @@ function initMap(){
         
         firebaseCoords.on('value', function(snapshot){
         
-        var j = 0;
+//         var j = 0;
         
         //getting values from the firebase database and plotting simultaneously
         snapshot.forEach(function(data){
@@ -68,25 +86,26 @@ function initMap(){
           var CoordLon = data.child("GPS_lon").val();
           var CoordCon = data.child("con").val();
           if(CoordCon === 1){
-            var CoordIcon = image['meterOn'].icon;
+            var CoordIcon = image['meterOn'];
           }
           else if(CoordCon === 2){
-            var CoordIcon = image['meterOff'].icon;
+            var CoordIcon = image['meterOff'];
           }
           else{
-            var CoordIcon = image['meterCritical'].icon;
+            var CoordIcon = image['meterCritical'];
           }
 
           var marker = new google.maps.Marker({
             position: {lat: CoordLat, lng: CoordLon},
             map: map,
             icon: CoordIcon,
-            title: CoordTitle,
-            zIndex: j+1
+            title: '' + CoordTitle,
+            zIndex: 1
           });
         if(CoordCon === 2){
             marker.setAnimation(google.maps.Animation.BOUNCE);
           } 
-        j++;});
+//         j++;
+        });
       });     
 }
