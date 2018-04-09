@@ -19,31 +19,31 @@ function initMap(){
             anchor: new google.maps.Point(0,32)
           },
           meterOff:{
-            url: 'https://maps.google.com/mapfiles/kml/paddle/blu-circle.png'
+            url: 'https://maps.google.com/mapfiles/kml/paddle/blu-circle.png',
             size: new google.maps.Size(20,32),
             origin: new google.maps.Point(0,0),
             anchor: new google.maps.Point(0,32)
           },
           meterCritical:{
-            url: 'https://maps.google.com/mapfiles/kml/paddle/red-circle.png'
+            url: 'https://maps.google.com/mapfiles/kml/paddle/red-circle.png',
             size: new google.maps.Size(20,32),
             origin: new google.maps.Point(0,0),
             anchor: new google.maps.Point(0,32)
           },
           nodeOn:{
-            url: 'https://maps.google.com/mapfiles/kml/paddle/grn-blank-lv.png'
+            url: 'https://maps.google.com/mapfiles/kml/paddle/grn-blank-lv.png',
             size: new google.maps.Size(20,32),
             origin: new google.maps.Point(0,0),
             anchor: new google.maps.Point(0,32)      
           },
           nodeOff:{
-            url: 'https://maps.google.com/mapfiles/kml/paddle/blu-blank-lv.png'
+            url: 'https://maps.google.com/mapfiles/kml/paddle/blu-blank-lv.png',
             size: new google.maps.Size(20,32),
             origin: new google.maps.Point(0,0),
             anchor: new google.maps.Point(0,32)      
           },
           nodeCritical:{
-            url: 'https://maps.google.com/mapfiles/kml/paddle/red-blank-lv.png'
+            url: 'https://maps.google.com/mapfiles/kml/paddle/red-blank-lv.png',
             size: new google.maps.Size(20,32),
             origin: new google.maps.Point(0,0),
             anchor: new google.maps.Point(0,32)      
