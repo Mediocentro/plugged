@@ -36,7 +36,7 @@ function initMap(){
         
         //getting values from the firebase database and plotting simultaneously
         snapshot.forEach(function(data){
-          var CoordTitle = data.child("meterID").val();
+          var CoordTitle = '' + data.child("meterID").val();
           var CoordLat = data.child("GPS_lat").val();
           var CoordLon = data.child("GPS_lon").val();
           var marker = new google.maps.Marker({
