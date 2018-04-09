@@ -47,6 +47,6 @@ function initMap(){
             title: CoordTitle,
             zIndex: j+1;
           });  
-        j++;});
+        j++;})
       }     
 }
