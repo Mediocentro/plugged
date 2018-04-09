@@ -48,5 +48,5 @@ function initMap(){
             zIndex: j+1
           });  
         j++;});
-      }     
+      });     
 }
