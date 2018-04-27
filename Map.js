@@ -32,6 +32,9 @@ function initMap(){
           },
           nodeCritical:{
             url: 'https://maps.google.com/mapfiles/kml/paddle/red-blank-lv.png'      
+          },
+          substation:{
+            url: 'http://maps.google.com/mapfiles/kml/paddle/S.png'
           }
        }; 
         
@@ -72,6 +75,8 @@ function initMap(){
           else if(CoordType == "T"){
             var CoordIcon = transformerIcon[CoordCon];
           }
+          else{
+                  var CoordIcon = image.substation;}
 
           marker[CoordTitle] = new google.maps.Marker({
             position: {lat: CoordLat, lng: CoordLon},
