@@ -73,10 +73,10 @@ function initMap(){
             map: map,
             icon: CoordIcon,
             title: '' + CoordTitle,
-            zIndex: 1
+            zIndex: 3
           });
         if(CoordCon === 2){
-            marker.setAnimation(google.maps.Animation.BOUNCE);
+            marker[CoordTitle].setAnimation(google.maps.Animation.BOUNCE);
           } 
 //         j++;
         });
