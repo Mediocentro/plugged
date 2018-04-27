@@ -57,6 +57,7 @@ function initMap(){
         snapshot.forEach(function(data){
           var CoordTitle = '' + data.child("ID").val();
           markerKeys.push(CoordTitle);
+          console.log(markerKeys);
           var CoordLat = data.child("GPS_lat").val();
           var CoordLon = data.child("GPS_lon").val();
           var CoordCon = data.child("con").val();
