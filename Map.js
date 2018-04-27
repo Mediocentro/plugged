@@ -35,30 +35,40 @@ function initMap(){
           }
        }; 
         
-       
-        var firebaseCoords = firebase.database().ref("/meters");
+       var consumerIcon = [image['meterOff'].icon,
+                            image['meterOn'].icon 
+                            image['meterCritical'].icon];
+
+        var transformerIcon = [image['nodeOff'].icon,
+                               image['nodeOn'].icon 
+                               image['nodeCritical'].icon];
+
+        var Coords = firebase.database().ref("/sub1");
         
-        firebaseCoords.on('value', function(snapshot){
+        var marker = {};
+        var markerKeys = [];
+
+        
+        Coords.on('value', function(snapshot){
         
 //         var j = 0;
         
         //getting values from the firebase database and plotting simultaneously
         snapshot.forEach(function(data){
-          var CoordTitle = data.child("meterID").val();
+          var CoordTitle = '' + data.child("ID").val();
+          markerKeys.push(CoordTitle);
           var CoordLat = data.child("GPS_lat").val();
           var CoordLon = data.child("GPS_lon").val();
           var CoordCon = data.child("con").val();
-          if(CoordCon === 1){
-            var CoordIcon = image.meterOn;
-          }
-          else if(CoordCon === 0){
-            var CoordIcon = image.meterOff;
-          }
-          else{
-            var CoordIcon = image.meterCritical;
+          var CoordType = data.child("type").val();
+          
+          if(CoordType == "C"){
+          var CoordIcon = consumerIcon[CoordCon];}
+          else if(CoordType == "T"){
+            var CoordIcon = transformerIcon[CoordCon];
           }
 
-          var marker = new google.maps.Marker({
+          marker[CoordTitle] = new google.maps.Marker({
             position: {lat: CoordLat, lng: CoordLon},
             map: map,
             icon: CoordIcon,
@@ -70,5 +80,7 @@ function initMap(){
           } 
 //         j++;
         });
-      });     
+      });
+      console.log(marker.length);
+      console.log(markerKeys.length);
 }
