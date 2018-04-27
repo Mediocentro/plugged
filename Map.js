@@ -1,8 +1,8 @@
 function initMap(){        
         //initializing the map
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 16,
-          center: new google.maps.LatLng(29.946472087381633, 76.81706071149961),
+          zoom: 12,
+          center: new google.maps.LatLng(29.945472087381633, 76.81706071149961),
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           disableDoubleClickZoom: true,
           mapTypeControl: false,
@@ -45,6 +45,9 @@ function initMap(){
 
         var Coords = firebase.database().ref("/sub1");
         
+        var enabledLine = "#18A865";
+        var disabledLine = "#181852";
+
         var marker = {};
         var markerKeys = [];
 
@@ -57,11 +60,11 @@ function initMap(){
         snapshot.forEach(function(data){
           var CoordTitle = '' + data.child("ID").val();
           markerKeys.push(CoordTitle);
-          console.log(markerKeys);
           var CoordLat = data.child("GPS_lat").val();
           var CoordLon = data.child("GPS_lon").val();
           var CoordCon = data.child("con").val();
           var CoordType = data.child("type").val();
+          var CoordParent = data.child("parentID").val();
           
           if(CoordType == "C"){
           var CoordIcon = consumerIcon[CoordCon];}
@@ -74,14 +77,23 @@ function initMap(){
             map: map,
             icon: CoordIcon,
             title: '' + CoordTitle,
-            zIndex: 3
+            zIndex: 3,
+            con: CoordCon,
+            parent: CoordParent
           });
         if(CoordCon === 2){
             marker[CoordTitle].setAnimation(google.maps.Animation.BOUNCE);
           } 
 //         j++;
         });
+        for (var i = 0; i<markerKeys.length; i++){
+          var set = marker[markerKeys[i]].con == 0 ? disabledLine : enabledLine;
+          var poly = new google.maps.PolyLine({
+            path: [marker[markerKeys[i]].getPosition(), marker[marker[markerKeys[i]].parent]],
+            strokeColor: set,
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+          });
+        }
       });
-      console.log(marker.length);
-      console.log(markerKeys.length);
 }
