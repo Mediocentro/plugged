@@ -22,7 +22,7 @@ Major Project Repository with website
 
 - The final connection point from substation to the rest of the power system network
 - Would have similar functionalities as the others, and would also most definitely incorporate the live tracking element
-- Don't know about the symbol here yet.
+- Don't know about the symbol here yet. (Temporarily using the T symbol provided by Google)
 
 ------------------
 **Substations**
