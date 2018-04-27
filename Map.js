@@ -84,7 +84,6 @@ function initMap(){
         if(CoordCon === 2){
             marker[CoordTitle].setAnimation(google.maps.Animation.BOUNCE);
           } 
-//         j++;
         });
         for (var i = 0; i<markerKeys.length; i++){
           if(marker[markerKeys[i]].parent == 0){
