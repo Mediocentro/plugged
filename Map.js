@@ -1,7 +1,7 @@
 function initMap(){        
         //initializing the map
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
+          zoom: 16,
           center: new google.maps.LatLng(29.945472087381633, 76.81706071149961),
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           disableDoubleClickZoom: true,
@@ -88,7 +88,7 @@ function initMap(){
         });
         for (var i = 0; i<markerKeys.length; i++){
           var set = marker[markerKeys[i]].con == 0 ? disabledLine : enabledLine;
-          var poly = new google.maps.PolyLine({
+          var poly = new google.maps.Polyline({
             path: [marker[markerKeys[i]].getPosition(), marker[marker[markerKeys[i]].parent]],
             strokeColor: set,
             strokeOpacity: 1.0,
