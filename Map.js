@@ -94,6 +94,7 @@ function initMap(){
             strokeOpacity: 1.0,
             strokeWeight: 2
           });
+          poly.setMap(map);
         }
       });
 }
