@@ -36,11 +36,11 @@ function initMap(){
        }; 
         
        var consumerIcon = [image['meterOff'].icon,
-                            image['meterOn'].icon 
+                            image['meterOn'].icon, 
                             image['meterCritical'].icon];
 
         var transformerIcon = [image['nodeOff'].icon,
-                               image['nodeOn'].icon 
+                               image['nodeOn'].icon, 
                                image['nodeCritical'].icon];
 
         var Coords = firebase.database().ref("/sub1");
