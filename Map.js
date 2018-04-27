@@ -51,7 +51,7 @@ function initMap(){
         var marker = {};
         var markerKeys = [];
 
-        
+        var x = new google.maps.LatLng(29.945472087381633, 76.81706071149961);
         Coords.on('value', function(snapshot){
         
 //         var j = 0;
@@ -89,7 +89,7 @@ function initMap(){
         for (var i = 0; i<markerKeys.length; i++){
           var set = marker[markerKeys[i]].con == 0 ? disabledLine : enabledLine;
           var poly = new google.maps.Polyline({
-            path: [marker[markerKeys[i]].getPosition(), marker[marker[markerKeys[i]].parent].getPosition()],
+            path: [marker[markerKeys[i]].getPosition(), x],
             strokeColor: set,
             strokeOpacity: 1.0,
             strokeWeight: 2
