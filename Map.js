@@ -87,8 +87,9 @@ function initMap(){
 //         j++;
         });
         for (var i = 0; i<markerKeys.length; i++){
+          if(marker[markerKeys[i]].parent == 0){
+                continue;}
           var set = marker[markerKeys[i]].con == 0 ? disabledLine : enabledLine;
-          console.log(set);
           var poly = new google.maps.Polyline({
             path: [marker[markerKeys[i]].getPosition(), marker[marker[markerKeys[i]].parent].getPosition()],
             strokeColor: set,
