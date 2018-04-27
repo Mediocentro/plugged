@@ -35,13 +35,13 @@ function initMap(){
           }
        }; 
         
-       var consumerIcon = [image['meterOff'].icon,
-                            image['meterOn'].icon, 
-                            image['meterCritical'].icon];
+       var consumerIcon = [image.meterOff,
+                            image.meterOn, 
+                            image.meterCritical];
 
-        var transformerIcon = [image['nodeOff'].icon,
-                               image['nodeOn'].icon, 
-                               image['nodeCritical'].icon];
+        var transformerIcon = [image.nodeOff,
+                               image.nodeOn, 
+                               image.nodeCritical];
 
         var Coords = firebase.database().ref("/sub1");
         
