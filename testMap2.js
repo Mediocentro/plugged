@@ -2,7 +2,7 @@ var map;
 function initMap(){        
         //initializing the map
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
+          zoom: 14,
           center: new google.maps.LatLng(29.95196888, 76.83568624),
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           disableDoubleClickZoom: true,
@@ -26,7 +26,7 @@ function initMap(){
       subs[i][3] = data.child("ID").val(); 
       i++;
       subMarker[data.key] = new google.maps.Marker({
-        position: {lat: subs[i][1], lon: subs[i][2]},
+        position: {lat: subs[i][1], lng: subs[i][2]},
         icon: 'http://maps.google.com/mapfiles/kml/paddle/S.png',
         map: map
       });
