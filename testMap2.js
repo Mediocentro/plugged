@@ -19,14 +19,12 @@ function initMap(){
   
       Substations.once('value', function(snapshot){ 
       snapshot.forEach(function(data){
-      subs[i] = []
-      subs[i][0] = data.key;
-      subs[i][1] = data.child("GPS_lat").val();
-      subs[i][2] = data.child("GPS_lon").val();
-      subs[i][3] = data.child("ID").val(); 
-      i++;
-      subMarker[data.key] = new google.maps.Marker({
-        position: {lat: subs[i][1], lng: subs[i][2]},
+      subs[0] = data.key;
+      subs[1] = data.child("GPS_lat").val();
+      subs[2] = data.child("GPS_lon").val();
+      subs[3] = data.child("ID").val(); 
+            subMarker[data.key] = new google.maps.Marker({
+        position: {lat: subs[1], lng: subs[2]},
         icon: 'http://maps.google.com/mapfiles/kml/paddle/S.png',
         map: map
       });
@@ -36,8 +34,7 @@ function initMap(){
         loadSingleLineDiagram(data.key);
       });
   });
-      });
-
+  });
 }
 
 function loadSingleLineDiagram(ref_value){
