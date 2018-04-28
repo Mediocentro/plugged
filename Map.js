@@ -2,7 +2,7 @@ function initMap(){
         //initializing the map
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 16,
-          center: new google.maps.LatLng(29.96298753, 76.83381401),
+          center: new google.maps.LatLng(29.9473347, 76.8154516),
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           disableDoubleClickZoom: true,
           mapTypeControl: false,
@@ -46,7 +46,7 @@ function initMap(){
                                image.nodeOn, 
                                image.nodeCritical];
 
-        var Coords = firebase.database().ref("/sub3");
+        var Coords = firebase.database().ref("/sub1");
         
         var enabledLine = "#18A865";
         var disabledLine = "#181852";
