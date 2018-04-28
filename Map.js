@@ -2,7 +2,7 @@ function initMap(){
         //initializing the map
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 16,
-          center: new google.maps.LatLng(29.945472087381633, 76.81706071149961),
+          center: new google.maps.LatLng(29.95533065, 76.80940087),
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           disableDoubleClickZoom: true,
           mapTypeControl: false,
@@ -46,7 +46,7 @@ function initMap(){
                                image.nodeOn, 
                                image.nodeCritical];
 
-        var Coords = firebase.database().ref("/sub1");
+        var Coords = firebase.database().ref("/sub2");
         
         var enabledLine = "#18A865";
         var disabledLine = "#181852";
@@ -55,7 +55,7 @@ function initMap(){
         var marker = {};
         var markerKeys = [];
 
-        var x = new google.maps.LatLng(29.945472087381633, 76.81706071149961);
+        
         Coords.on('value', function(snapshot){
         
 //         var j = 0;
