@@ -36,6 +36,7 @@ function initMap(){
         loadSingleLineDiagram(data.key);
       });
   });
+      });
 
 }
 
