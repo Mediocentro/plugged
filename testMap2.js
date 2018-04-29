@@ -112,7 +112,7 @@ function loadSingleLineDiagram(ref_value){
                   var CoordIcon = image.substation;
                   var z = 5;}
 
-          if(maker[CoordTitle] === undefined){
+          if(marker[CoordTitle] === undefined){
           marker[CoordTitle] = new google.maps.Marker({
             position: {lat: CoordLat, lng: CoordLon},
             map: map,
