@@ -3,6 +3,17 @@
       #map {
         height: 700px;
       }
+      
+      #info-box {
+        background-color: white;
+        border: 1px solid black;
+        bottom: 30px;
+        height: 20px;
+        padding: 10px;
+        position: absolute;
+        left: 30px;
+      }
+
        .headtitle {
         margin: 1em 0 0.5em 0;
 	font-weight: normal;
