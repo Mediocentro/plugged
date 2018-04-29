@@ -126,7 +126,7 @@ function loadSingleLineDiagram(ref_value){
 
           else{
             marker[CoordTitle].con = CoordCon;
-            marker[CoordTitle].icon = CoordIcon;
+            marker[CoordTitle].setIcon({icon: CoordIcon});
             marker[CoordTitle].flag = 0;
           }
 
