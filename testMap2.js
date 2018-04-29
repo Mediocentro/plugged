@@ -102,27 +102,43 @@ function loadSingleLineDiagram(ref_value){
           var CoordParent = '' + data.child("parentID").val();
           
           if(CoordType == "C"){
-          var CoordIcon = consumerIcon[CoordCon];}
+          var CoordIcon = consumerIcon[CoordCon];
+          var z = 3;}
           else if(CoordType == "T"){
             var CoordIcon = transformerIcon[CoordCon];
+            var z = 4;
           }
           else{
-                  var CoordIcon = image.substation;}
+                  var CoordIcon = image.substation;
+                  var z = 5;}
 
+          if(maker[CoordTitle] === undefined){
           marker[CoordTitle] = new google.maps.Marker({
             position: {lat: CoordLat, lng: CoordLon},
             map: map,
             icon: CoordIcon,
             title: '' + CoordTitle,
-            zIndex: 3,
-            con: CoordCon,
-            parent: CoordParent
-          });
+            zIndex: z,
+            con: CoordCon, //Tells us whether the condition is active,inactive or theft
+            parent: CoordParent,
+            flag: 0 // Flag for whether the marker has already been used for polylines
+          });}
+
+          else{
+            marker[CoordTitle].con = CoordCon;
+            marker[CoordTitle].icon = CoordIcon;
+            marker[CoordTitle].flag = 0;
+          }
+
         if(CoordCon === 2){
             marker[CoordTitle].setAnimation(google.maps.Animation.BOUNCE);
           } 
         });
+
         for (var i = 0; i<markerKeys.length; i++){
+          if(marker[markerKeys[i]].flag == 1){
+            continue;
+          }
           if(marker[markerKeys[i]].parent == 0){
                 continue;}
           var set = marker[markerKeys[i]].con == 0 ? disabledLine : enabledLine;
@@ -134,6 +150,7 @@ function loadSingleLineDiagram(ref_value){
             strokeOpacity: 1.0,
             strokeWeight: 2
           });
+          marker[markerKeys[i]].flag = 1;
           poly.setMap(map);
         }
       });
