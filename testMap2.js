@@ -104,6 +104,13 @@ function loadSingleLineDiagram(ref_value){
           var CoordType = data.child("type").val();
           var CoordParent = '' + data.child("parentID").val();
           
+          var conditionText = CoordCon == 0? 'Disabled' : 'OK';
+          if (CoordCon == 2){
+            conditionText = 'Stealing';
+          }
+
+          var infoContent = 'ID: ' + CoordTitle + '<br />Type: ' + CoordType + '<br />Status: ' + conditionText;
+
           if(CoordType == "C"){
           var CoordIcon = consumerIcon[CoordCon];
           var z = 3;}
@@ -131,14 +138,14 @@ function loadSingleLineDiagram(ref_value){
             marker[CoordTitle].con = CoordCon;
             marker[CoordTitle].setIcon(CoordIcon);
             marker[CoordTitle].flag = 0;
+            marker[CoordTitle].setAnimation(null);
           }
+
+          addInfoWindow(marker[CoordTitle], infoContent);
 
         if(CoordCon === 2){
             marker[CoordTitle].setAnimation(google.maps.Animation.BOUNCE);
           }
-        else{
-                marker[CoordTitle].setAnimation(null);
-        }
         });
 
         for (var i = 0; i<markerKeys.length; i++){
@@ -160,4 +167,15 @@ function loadSingleLineDiagram(ref_value){
           poly.setMap(map);
         }
       });
+}
+
+function addInfoWindow(marker, message) {
+
+            var infoWindow = new google.maps.InfoWindow({
+                content: message
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infoWindow.open(map, marker);
+            });
 }
