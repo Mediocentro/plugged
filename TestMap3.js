@@ -226,9 +226,11 @@ function exitDisable(markers){
 function disable(ID, link){
   disableCoords = firebase.database().ref(link);
   disableCoords.once('value', function(snapshot){
-    snapshot.forEach(function(data){
-      if(('' + data.child("ID").val()) === ID){
-        firebase.database.ref(link).child.(data.key).update({con: 0});
+     snapshot.forEach(function(data){
+      var tempID = data.child("ID").val();
+      var l = link + '\' + data.key;
+      if(tempID === ID){
+        firebase.database.ref().child.(l).update({con: 0});
       }
     });
   });
