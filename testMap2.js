@@ -55,13 +55,13 @@ function loadSingleLineDiagram(ref_value){
             scaledSize: new google.maps.Size(32,32)
           },
           nodeOn:{
-            url: 'https://maps.google.com/mapfiles/kml/paddle/grn-blank-lv.png'      
+            url: 'https://maps.google.com/mapfiles/kml/paddle/grn-circle-lv.png'      
           },
           nodeOff:{
-            url: 'https://maps.google.com/mapfiles/kml/paddle/blu-blank-lv.png'
+            url: 'https://maps.google.com/mapfiles/kml/paddle/blu-circle-lv.png'
           },
           nodeCritical:{
-            url: 'https://maps.google.com/mapfiles/kml/paddle/red-blank-lv.png'      
+            url: 'https://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png'      
           },
           substation:{
             url: 'http://maps.google.com/mapfiles/kml/paddle/S.png'
