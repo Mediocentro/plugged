@@ -230,7 +230,7 @@ function disable(ID, link){
       var tempID = data.child("ID").val();
       var l = link + '/' + data.key;
       if(tempID === ID){
-        firebase.database.ref().child.(l).update({con: 0});
+        firebase.database.ref().child(l).update({con: 0});
       }
     });
   });
