@@ -153,9 +153,9 @@ function loadSingleLineDiagram(ref_value){
           }
 
           google.maps.event.addListener(marker[CoordTitle], 'click', function(){
-            infowindow.close(); // Close previously opened infowindow
-            infowindow.setContent(infoContent);
-            infowindow.open(map, marker);
+            infoWindow.close(); // Close previously opened infowindow
+            infoWindow.setContent(infoContent);
+            infoWindow.open(map, marker);
           });
 
         if(CoordCon === 2){
