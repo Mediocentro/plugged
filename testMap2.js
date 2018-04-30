@@ -34,9 +34,10 @@ function initMap(){
         map.setCenter(subMarker[data.key].getPosition());
         loadSingleLineDiagram(data.key);
       });
-              window.alert("Please select a Substation!");
+              
   });
   });
+        window.alert("Please select a Substation!");
 }
 
 function loadSingleLineDiagram(ref_value){
