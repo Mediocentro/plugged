@@ -200,6 +200,6 @@ function loadSingleLineDiagram(ref_value){
 }
 
 function disableNode(map, fb_link, markers){
-  window.alert("Please select the nodes to disable. \n After selecting press right click.");
-  map.addListener('right_click', loadSingleLineDiagram(fb_link));
+  window.alert("Please select the nodes to disable. \nAfter selecting press right click.");
+  return;
 }
