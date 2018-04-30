@@ -1,5 +1,5 @@
 var map;
-window.alert("Please select a Substation");
+
 function initMap(){        
         //initializing the map
         map = new google.maps.Map(document.getElementById('map'), {
@@ -34,6 +34,7 @@ function initMap(){
         map.setCenter(subMarker[data.key].getPosition());
         loadSingleLineDiagram(data.key);
       });
+              window.alert("Please select a Substation!");
   });
   });
 }
