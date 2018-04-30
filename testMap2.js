@@ -37,7 +37,6 @@ function initMap(){
               
   });
   });
-        window.alert("Please select a Substation!");
 }
 
 function loadSingleLineDiagram(ref_value){
@@ -155,7 +154,7 @@ function loadSingleLineDiagram(ref_value){
           google.maps.event.addListener(marker[CoordTitle], 'click', function(){
             infoWindow.close(); // Close previously opened infowindow
             infoWindow.setContent(infoContent);
-            infoWindow.open(map, marker);
+            infoWindow.open(map, marker[CoordTitle]);
           });
 
         if(CoordCon === 2){
