@@ -228,7 +228,7 @@ function disable(ID, link){
   disableCoords.once('value', function(snapshot){
      snapshot.forEach(function(data){
       var tempID = data.child("ID").val();
-      var l = link + '\' + data.key;
+      var l = link + '/' + data.key;
       if(tempID === ID){
         firebase.database.ref().child.(l).update({con: 0});
       }
