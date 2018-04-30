@@ -73,6 +73,7 @@ function initMap(){
 
 function loadSingleLineDiagram(ref_value){
 
+        window.alert("In single line diagram mode.");
   ref_link = "/" + ref_value;
 
   var image = {
@@ -200,4 +201,5 @@ function loadSingleLineDiagram(ref_value){
 
 function disableNode(map, fb_link, markers){
   window.alert("Please select the nodes to disable. \n After selecting press right click.");
+  map.addListener('right_click', loadSingleLineDiagram(fb_link));
 }
