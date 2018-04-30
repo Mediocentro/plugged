@@ -27,6 +27,7 @@ function initMap(){
             subMarker[data.key] = new google.maps.Marker({
         position: {lat: subs[1], lng: subs[2]},
         icon: 'http://maps.google.com/mapfiles/kml/paddle/S.png',
+        zIndex: 2,
         map: map
       });
       var listener = subMarker[data.key].addListener('click', function(){
@@ -39,8 +40,7 @@ function initMap(){
   });
 }
 
-function loadSingleLineDiagram(ref_value, listener){
-   google.maps.events.removeListener(listener);   
+function loadSingleLineDiagram(ref_value, listener){ 
    var infoWindow = new google.maps.InfoWindow();
 
   ref_link = "/" + ref_value;
@@ -92,8 +92,6 @@ function loadSingleLineDiagram(ref_value, listener){
 
         
         Coords.on('value', function(snapshot){
-        
-//         var j = 0;
         
         //getting values from the firebase database and plotting simultaneously
         snapshot.forEach(function(data){
