@@ -73,7 +73,6 @@ function initMap(){
 
 function loadSingleLineDiagram(ref_value){
 
-        window.alert("In single line diagram mode.");
   ref_link = "/" + ref_value;
 
   var image = {
@@ -120,7 +119,7 @@ function loadSingleLineDiagram(ref_value){
 
         var marker = {};
         var markerKeys = [];
-
+        var childMarkers = {};
         
         Coords.on('value', function(snapshot){
 
@@ -135,6 +134,14 @@ function loadSingleLineDiagram(ref_value){
           var CoordType = data.child("type").val();
           var CoordParent = '' + data.child("parentID").val();
           
+          if(childMarkers[CoordParent]!=undefined){
+            childMarkers[CoordParent].push(CoordTitle);
+          }
+          else{
+            childMarkers[CoordParent] = [];
+            childMarkers[CoordParent].push(CoordTitle);
+          }
+
           if(CoordType == "C"){
           var CoordIcon = consumerIcon[CoordCon];
           var z = 3;}
@@ -192,6 +199,7 @@ function loadSingleLineDiagram(ref_value){
         }
       });
 
+        console.log(childMarkers);
         var nodeControlDiv = document.createElement('div');
         var nodeControl = new NodeControl(nodeControlDiv, map, marker, ref_link);
 
@@ -201,6 +209,25 @@ function loadSingleLineDiagram(ref_value){
 
 function disableNode(map, fb_link, markers){
   window.alert("Please select the nodes to disable. \nAfter selecting press right click.");
-  map.addListener('rightclick', function(){
-  window.alert("Right Clicked");});
+  var quit = map.addListener('rightclick', exitDisable(){
+    for (var i in markers) {
+      google.maps.event.clearInstanceListener(markers[i]);
+    }
+    console.log("Event tracked successfuly");
+    google.maps.event.removeListener(quit);
+  });
+  for (var i in markers) {
+    markers[i].addListener('click', disable(markers[i].title, fb_link));
+  } 
+}
+
+function disable(ID, link){
+  disableCoords = firebase.database().ref(link);
+  disableCoords.once('value', function(snapshot){
+    snapshot.forEach(function(data){
+      if(('' + data.child("ID").val()) === ID){
+        firebase.database.ref(link).child(data.key).update({con: 0});
+      }
+    });
+  });
 }
