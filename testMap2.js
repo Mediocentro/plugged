@@ -1,4 +1,5 @@
 var map;
+window.alert("Please select a Substation");
 function initMap(){        
         //initializing the map
         map = new google.maps.Map(document.getElementById('map'), {
