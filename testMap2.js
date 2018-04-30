@@ -29,7 +29,8 @@ function initMap(){
         icon: 'http://maps.google.com/mapfiles/kml/paddle/S.png',
         map: map
       });
-      subMarker[data.key].addListener('click', function(){
+      var listener = subMarker[data.key].addListener('click', function(){
+        google.maps.events.removeListener(listener);      
         map.setZoom(16);
         map.setCenter(subMarker[data.key].getPosition());
         loadSingleLineDiagram(data.key);
