@@ -29,7 +29,7 @@ function NodeControl(controlDiv, map, markers, fb_link) {
         });
 
         disableUI.addEventListener('click', function() {
-          disableNode(map, ref_link, markers);
+          disableNode(map, ref_link, markers, childMarkers);
         });
       }
 
@@ -209,16 +209,18 @@ function loadSingleLineDiagram(ref_value){
 
 function disableNode(map, fb_link, markers){
   window.alert("Please select the nodes to disable. \nAfter selecting press right click.");
-  var quit = map.addListener('rightclick', exitDisable(){
+  var quit = map.addListener('rightclick', exitDisable(markers));
+  for (var i in markers) {
+    markers[i].addListener('click', disable(markers[i].title, fb_link));
+  } 
+}
+
+function exitDisable(markers){
     for (var i in markers) {
       google.maps.event.clearInstanceListener(markers[i]);
     }
     console.log("Event tracked successfuly");
     google.maps.event.removeListener(quit);
-  });
-  for (var i in markers) {
-    markers[i].addListener('click', disable(markers[i].title, fb_link));
-  } 
 }
 
 function disable(ID, link){
@@ -226,7 +228,7 @@ function disable(ID, link){
   disableCoords.once('value', function(snapshot){
     snapshot.forEach(function(data){
       if(('' + data.child("ID").val()) === ID){
-        firebase.database.ref(link).child(data.key).update({con: 0});
+        firebase.database.ref(link).child.(data.key).update({con: 0});
       }
     });
   });
