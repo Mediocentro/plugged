@@ -42,6 +42,8 @@ function initMap(){
 
 function loadSingleLineDiagram(ref_value){
 
+   var infoWindow = new google.maps.InfoWindow();
+
   ref_link = "/" + ref_value;
 
   var image = {
@@ -108,8 +110,17 @@ function loadSingleLineDiagram(ref_value){
           if (CoordCon == 2){
             conditionText = 'Stealing';
           }
-
-          var infoContent = 'ID: ' + CoordTitle + '<br />Type: ' + CoordType + '<br />Status: ' + conditionText;
+          var typeText;
+          if(CoordType == 'T'){
+            typeText = 'Transformer';
+          }
+          else if (CoordType == 'C'){
+            typeText = 'Customer';
+          }
+          else if(CoordType == 'S'){
+            typeText = 'Substation';
+          }
+          var infoContent = '<h2>Info</h2> <hr/> ID: ' + CoordTitle + '<br />Type: ' + typeText + '<br />Status: ' + conditionText;
 
           if(CoordType == "C"){
           var CoordIcon = consumerIcon[CoordCon];
@@ -141,7 +152,11 @@ function loadSingleLineDiagram(ref_value){
             marker[CoordTitle].setAnimation(null);
           }
 
-          addInfoWindow(marker[CoordTitle], infoContent);
+          google.maps.event.addListener(marker[CoordTitle], 'click', function(){
+            infowindow.close(); // Close previously opened infowindow
+            infowindow.setContent(infoContent);
+            infowindow.open(map, marker);
+          });
 
         if(CoordCon === 2){
             marker[CoordTitle].setAnimation(google.maps.Animation.BOUNCE);
@@ -167,15 +182,4 @@ function loadSingleLineDiagram(ref_value){
           poly.setMap(map);
         }
       });
-}
-
-function addInfoWindow(marker, message) {
-
-            var infoWindow = new google.maps.InfoWindow({
-                content: message
-            });
-
-            google.maps.event.addListener(marker, 'click', function () {
-                infoWindow.open(map, marker);
-            });
 }
