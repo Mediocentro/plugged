@@ -128,6 +128,7 @@ function loadSingleLineDiagram(ref_value){
             marker[CoordTitle].con = CoordCon;
             marker[CoordTitle].setIcon(CoordIcon);
             marker[CoordTitle].flag = 0;
+                  console.log(1);
           }
 
         if(CoordCon === 2){
