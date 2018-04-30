@@ -124,15 +124,18 @@ function loadSingleLineDiagram(ref_value){
             flag: 0 // Flag for whether the marker has already been used for polylines
           });}
 
-          else{
+          else if(marker[CoordTitle].con != CoordCon){
             marker[CoordTitle].con = CoordCon;
-            marker[CoordTitle].setIcon({icon: CoordIcon});
+            marker[CoordTitle].setIcon(CoordIcon.url);
             marker[CoordTitle].flag = 0;
           }
 
         if(CoordCon === 2){
             marker[CoordTitle].setAnimation(google.maps.Animation.BOUNCE);
-          } 
+          }
+        else{
+                marker[CoordTitle].setAnimation(null);
+        }
         });
 
         for (var i = 0; i<markerKeys.length; i++){
