@@ -30,10 +30,10 @@ function initMap(){
         map: map
       });
       var listener = subMarker[data.key].addListener('click', function(){
-        google.maps.events.removeListener(listener);      
         map.setZoom(16);
         map.setCenter(subMarker[data.key].getPosition());
         loadSingleLineDiagram(data.key);
+        google.maps.events.removeListener(listener);   
       });
               
   });
