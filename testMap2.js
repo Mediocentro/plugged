@@ -32,16 +32,15 @@ function initMap(){
       var listener = subMarker[data.key].addListener('click', function(){
         map.setZoom(16);
         map.setCenter(subMarker[data.key].getPosition());
-        loadSingleLineDiagram(data.key);
-        google.maps.events.removeListener(listener);   
+        loadSingleLineDiagram(data.key, listener);  
       });
               
   });
   });
 }
 
-function loadSingleLineDiagram(ref_value){
-
+function loadSingleLineDiagram(ref_value, listener){
+   google.maps.events.removeListener(listener);   
    var infoWindow = new google.maps.InfoWindow();
 
   ref_link = "/" + ref_value;
