@@ -33,14 +33,14 @@ function initMap(){
       var listener = subMarker[data.key].addListener('click', function(){
         map.setZoom(16);
         map.setCenter(subMarker[data.key].getPosition());
-        loadSingleLineDiagram(data.key, listener);  
+        loadSingleLineDiagram(data.key);  
       });
               
   });
   });
 }
 
-function loadSingleLineDiagram(ref_value, listener){ 
+function loadSingleLineDiagram(ref_value){ 
    var infoWindow = new google.maps.InfoWindow();
 
   ref_link = "/" + ref_value;
@@ -179,4 +179,7 @@ function loadSingleLineDiagram(ref_value, listener){
           poly.setMap(map);
         }
       });
+        function myFunction(){
+                window.alert("Yes! It works!");}
+      
 }
