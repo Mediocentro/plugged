@@ -113,17 +113,19 @@ console.log(subID);
         
         var uploadvals = {};
         
-        var sub10Data = firebase.database().ref("/10");
-        sub10Data.on('value', function(snapshot){
-                snapshot.forEach(function(data){
-                        uploadvals[data.key] = '' + data.val();
-                });
-        });
+       
         
         Coords.on('value', function(snapshot){
         
         //getting values from the firebase database and plotting simultaneously
         snapshot.forEach(function(data){
+                
+           var sub10Data = firebase.database().ref("/10");
+                sub10Data.on('value', function(snapshot){
+                snapshot.forEach(function(data){
+                        uploadvals[data.key] = '' + data.val();
+                  });
+             });      
           var CoordTitle = '' + data.child("ID").val();
           markerKeys.push(CoordTitle);
           var CoordLat = data.child("GPS_lat").val();
