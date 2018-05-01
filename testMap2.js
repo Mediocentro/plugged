@@ -216,7 +216,6 @@ console.log(subID);
                                         else{
                                                 parentID1 = staffData[IDtext].tID;
                                         }
-                        }
                         CID = parentID1 + markerKeys.length + 1;
                         google.maps.event.addListener(map, 'dblclick', function(event){
                                 GPS_lat1 = event.latLng.lat();
