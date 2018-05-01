@@ -111,6 +111,15 @@ console.log(subID);
                 });
         });
         
+        var uploadvals = {};
+        
+        var sub10Data = firebase.database().ref("/10");
+        sub10Data.on('value', function(snapshot){
+                snapshot.forEach(data){
+                        uploadvals[data.key] = '' + data.val();
+                });
+        });
+        
         Coords.on('value', function(snapshot){
         
         //getting values from the firebase database and plotting simultaneously
@@ -137,8 +146,13 @@ console.log(subID);
           else if(CoordType == 'S'){
             typeText = 'Substation';
           }
-          var infoContent = '<h2>Info</h2> <hr/> ID: ' + CoordTitle + '<br />Type: ' + typeText + '<br />Status: ' + conditionText;
-
+          
+          if(CoordTitle != '10'){      
+          var infoContent = '<h2>Info</h2> <hr/> ID: ' + CoordTitle + '<br />Type: ' + typeText + '<br />Status: ' + conditionText;}
+                
+          else{
+                  var infoContent = '<h2>Info</h2> <hr/> ID: ' + CoordTitle + '<br />Type: ' + typeText + '<br />Status: ' + conditionText + '<br/>Voltage: ' + uploadvals['V'] + '<br/>Current: ' + uploadvals['I'] + '<br/>Power: ' + uploadvals['P'];}
+          }
           if(CoordType == "C"){
           var CoordIcon = consumerIcon[CoordCon];
           var z = 3;}
