@@ -218,13 +218,10 @@ console.log(subID);
                                         }
                         }
                         CID = parentID1 + markerKeys.length + 1;
-                        google.maps.event.addListener(map, 'click', function(event){
+                        google.maps.event.addListener(map, 'dblclick', function(event){
                                 GPS_lat1 = event.latLng.lat();
                                 GPS_lon1 = event.latLng.lng();
-                        });
-                                window.alert("Please click on the location you want to add the Customer at.");
-                        if(GPS_lat1!= null){
-                        var post = {
+                                var post = {
                                 ID: CID,
                                 parentID: parentID1,
                                 GPS_lat: GPS_lat1,
@@ -235,7 +232,10 @@ console.log(subID);
                                 
                                 firebaseUpdate = firebase.database().ref().child(ref_link);
                                 firebaseUpdate.push().set(post);
-                        }
+                        
+                        });
+                                window.alert("Please double-click on the location you want to add the Customer at.");
+                        
                         }
                         else{
                                 window.alert("Invalid Staff ID");
