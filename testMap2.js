@@ -221,7 +221,7 @@ console.log(subID);
                         google.maps.event.addListener(map, 'click', function(event){
                                 GPS_lat1 = event.latLng.lat();
                                 GPS_lon1 = event.latLng.lon();
-                        }
+                        });
                                 window.alert("Please click on the location you want to add the Customer at.");
                         if(GPS_lat1!= null){
                         var post = {
