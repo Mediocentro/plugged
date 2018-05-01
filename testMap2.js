@@ -29,12 +29,13 @@ function initMap(){
         icon: 'http://maps.google.com/mapfiles/kml/paddle/S.png',
         zIndex: 2,
         Title: subs[3],
+                    name: subs[3],
         map: map
       });
       var listener = subMarker[data.key].addListener('click', function(){
         map.setZoom(16);
         map.setCenter(subMarker[data.key].getPosition());
-        loadSingleLineDiagram(data.key, subMarker[data.key].Title);  
+        loadSingleLineDiagram(data.key, subMarker[data.key].name);  
       });
               
   });
