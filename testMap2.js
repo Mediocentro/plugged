@@ -90,6 +90,22 @@ function loadSingleLineDiagram(ref_value){
         var marker = {};
         var markerKeys = [];
 
+        var staff = firebase.database().ref("/staff");
+        
+        var staffData = {}; 
+        var staffKeys = [];
+        
+        staff.once('value', function(snapshot){
+                snapshot.forEach(function(data){
+                        var ID = '' + data.child("ID").val();
+                        staffData[ID] = {}
+                        staffData[ID].boss = data.child("BossID").val();
+                        staffData[ID].tID = data.child("TID").val();
+                        staffData[ID].name = data.child("Name").val();
+                        staffData[ID].sID = data.child("SID").val();
+                        staffKeys.push(ID);
+                });
+        });
         
         Coords.on('value', function(snapshot){
         
@@ -179,6 +195,15 @@ function loadSingleLineDiagram(ref_value){
           poly.setMap(map);
         }
       });
-        $("#AAC").click(function(){window.alert(''+ markerKeys.length);});
+        //safely assuming that all the line diagram elements have been loaded onto the map as the user would only click on the buttons after it has.
+        $("#AAC").click(function(){
+                var promptText = "Choose staff who adds the Customer: ";
+                for (var i = 0; i<staffKeys.length; i++){
+                        promptText += staffData[staffKeys[i]].name + '(ID = ' + staffKeys[i] + '\n';
+                }
+                var ID = prompt(promptText, 0);
+                if(ID!=0){
+                        window.alert("YES!");}
+        });
       
 }
