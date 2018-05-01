@@ -152,7 +152,6 @@ console.log(subID);
                 
           else{
                   var infoContent = '<h2>Info</h2> <hr/> ID: ' + CoordTitle + '<br />Type: ' + typeText + '<br />Status: ' + conditionText + '<br/>Voltage: ' + uploadvals['V'] + '<br/>Current: ' + uploadvals['I'] + '<br/>Power: ' + uploadvals['P'];}
-          }
           if(CoordType == "C"){
           var CoordIcon = consumerIcon[CoordCon];
           var z = 3;}
