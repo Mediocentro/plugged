@@ -23,24 +23,25 @@ function initMap(){
       subs[0] = data.key;
       subs[1] = data.child("GPS_lat").val();
       subs[2] = data.child("GPS_lon").val();
-      subs[3] = data.child("ID").val(); 
+      subs[3] = '' + data.child("ID").val(); 
             subMarker[data.key] = new google.maps.Marker({
         position: {lat: subs[1], lng: subs[2]},
         icon: 'http://maps.google.com/mapfiles/kml/paddle/S.png',
         zIndex: 2,
+        Title: subs[3],
         map: map
       });
       var listener = subMarker[data.key].addListener('click', function(){
         map.setZoom(16);
         map.setCenter(subMarker[data.key].getPosition());
-        loadSingleLineDiagram(data.key);  
+        loadSingleLineDiagram(data.key, subs[3]);  
       });
               
   });
   });
 }
 
-function loadSingleLineDiagram(ref_value){ 
+function loadSingleLineDiagram(ref_value, subID){ 
    var infoWindow = new google.maps.InfoWindow();
 
   ref_link = "/" + ref_value;
@@ -97,13 +98,15 @@ function loadSingleLineDiagram(ref_value){
         
         staff.once('value', function(snapshot){
                 snapshot.forEach(function(data){
-                        var ID = '' + data.child("ID").val();
-                        staffData[ID] = {}
-                        staffData[ID].boss = data.child("BossID").val();
-                        staffData[ID].tID = data.child("TID").val();
-                        staffData[ID].name = data.child("Name").val();
-                        staffData[ID].sID = data.child("SID").val();
-                        staffKeys.push(ID);
+                        if(data.child("SID").val() === subID){
+                                var ID = '' + data.child("ID").val();
+                                staffData[ID] = {}
+                                staffData[ID].boss = data.child("BossID").val();
+                                staffData[ID].tID = data.child("TID").val();
+                                staffData[ID].name = data.child("Name").val();
+                                staffData[ID].sID = data.child("SID").val();
+                                staffKeys.push(ID);
+                        }
                 });
         });
         
@@ -197,9 +200,9 @@ function loadSingleLineDiagram(ref_value){
       });
         //safely assuming that all the line diagram elements have been loaded onto the map as the user would only click on the buttons after it has.
         $("#AAC").click(function(){
-                var promptText = "Choose staff who adds the Customer: ";
+                var promptText = "Choose staff who adds the Customer: \n";
                 for (var i = 0; i<staffKeys.length; i++){
-                        promptText += staffData[staffKeys[i]].name + '(ID = ' + staffKeys[i] + '\n';
+                        promptText += staffData[staffKeys[i]].name + ' (ID = ' + staffKeys[i] + ')\n';
                 }
                 var ID = prompt(promptText, 0);
                 if(ID!=0){
