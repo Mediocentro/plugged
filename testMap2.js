@@ -206,7 +206,7 @@ console.log(subID);
                         promptText += staffData[staffKeys[i]].name + ' (ID = ' + staffKeys[i] + ')\n';
                 }
                 var ID = prompt(promptText, 0);
-                if(ID!=0){
+                if(ID!=null){
                         window.alert("YES!");}
         });
       
