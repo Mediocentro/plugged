@@ -179,7 +179,6 @@ function loadSingleLineDiagram(ref_value){
           poly.setMap(map);
         }
       });
-        function myFunction(){
-                window.alert("Yes! It works!");}
+        $("#AAC").click(function(){window.alert("Yes! It works!");});
       
 }
