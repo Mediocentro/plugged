@@ -43,7 +43,7 @@ function initMap(){
 
 function loadSingleLineDiagram(ref_value, subID){ 
    var infoWindow = new google.maps.InfoWindow();
-
+console.log(subID);
   ref_link = "/" + ref_value;
 
   var image = {
