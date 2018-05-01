@@ -98,7 +98,7 @@ function loadSingleLineDiagram(ref_value, subID){
         
         staff.once('value', function(snapshot){
                 snapshot.forEach(function(data){
-                        if(data.child("SID").val() === subID){
+                        if(('' + data.child("SID").val()) === subID){
                                 var ID = '' + data.child("ID").val();
                                 staffData[ID] = {}
                                 staffData[ID].boss = data.child("BossID").val();
