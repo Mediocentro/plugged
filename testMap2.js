@@ -207,7 +207,39 @@ console.log(subID);
                 }
                 var ID = prompt(promptText, 0);
                 if(ID!=null){
-                        window.alert("YES!");}
+                       var IDtext = '' + ID;
+                       var CID, parentID1, GPS_lat1, GPS_lon1, con1 = 1, type1= "C";
+                        if(staffData[IDtext]!= undefined){
+                                        if(staffData[IDtext].tID === 0){
+                                                parentID1 = staffData[IDtext].sID;
+                                        }
+                                        else{
+                                                parentID1 = staffData[IDtext].tID;
+                                        }
+                        }
+                        CID = parentID1 + markerKeys.length + 1;
+                        google.maps.event.addListener(map, 'click', function(event){
+                                GPS_lat1 = event.latLng.lat();
+                                GPS_lon1 = event.latLng.lon();
+                        }
+                                window.alert("Please click on the location you want to add the Customer at.");
+                        if(GPS_lat1!= null){
+                        var post = {
+                                ID: CID,
+                                parentID: parentID1,
+                                GPS_lat: GPS_lat1,
+                                GPS_lon: GPS_lon1,
+                                type: type1,
+                                con: con1                        
+                        };
+                                
+                                firebaseUpdate = firebase.database().ref().child(ref_link);
+                                firebaseUpdate.push().set(post);
+                        }
+                        }
+                        else{
+                                window.alert("Invalid Staff ID");
+                        }
         });
       
 }
