@@ -115,7 +115,7 @@ console.log(subID);
         
         var sub10Data = firebase.database().ref("/10");
         sub10Data.on('value', function(snapshot){
-                snapshot.forEach(data){
+                snapshot.forEach(function(data){
                         uploadvals[data.key] = '' + data.val();
                 });
         });
