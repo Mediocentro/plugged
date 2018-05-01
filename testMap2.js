@@ -34,7 +34,7 @@ function initMap(){
       var listener = subMarker[data.key].addListener('click', function(){
         map.setZoom(16);
         map.setCenter(subMarker[data.key].getPosition());
-        loadSingleLineDiagram(data.key, subs[3]);  
+        loadSingleLineDiagram(data.key, subMarker[data.key].Title);  
       });
               
   });
