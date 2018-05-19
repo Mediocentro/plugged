@@ -60,6 +60,10 @@ console.log(subID);
             url: 'https://maps.google.com/mapfiles/kml/paddle/red-circle.png',
             scaledSize: new google.maps.Size(32,32)
           },
+          meterZero:{
+            url: 'https://maps.google.com/mapfiles/kml/paddle/wht-circle.png',
+            scaledSize: new google.maps.Size(32,32)
+          },
           nodeOn:{
             url: 'https://maps.google.com/mapfiles/kml/paddle/grn-circle-lv.png'      
           },
@@ -69,6 +73,9 @@ console.log(subID);
           nodeCritical:{
             url: 'https://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png'      
           },
+          nodeZero:{
+            url: 'https://maps.google.com/mapfiles/kml/paddle/wht-circle-lv.png'
+          },
           substation:{
             url: 'http://maps.google.com/mapfiles/kml/paddle/S.png'
           }
@@ -77,11 +84,13 @@ console.log(subID);
        
        var consumerIcon = [image.meterOff,
                             image.meterOn, 
-                            image.meterCritical];
+                            image.meterCritical,
+                            image.meterZero];
 
         var transformerIcon = [image.nodeOff,
                                image.nodeOn, 
-                               image.nodeCritical];
+                               image.nodeCritical,
+                               image.nodeZero];
 
         var Coords = firebase.database().ref(ref_link);
         
@@ -119,7 +128,7 @@ console.log(subID);
                   });
              });   
        
-        
+        var ConditionTexts = ['Disabled', 'OK', 'Stealing','Zero Power','Exceeded Rating'];
         Coords.on('value', function(snapshot){
         
         //getting values from the firebase database and plotting simultaneously
@@ -134,10 +143,7 @@ console.log(subID);
           var CoordType = data.child("type").val();
           var CoordParent = '' + data.child("parentID").val();
           
-          var conditionText = CoordCon == 0? 'Disabled' : 'OK';
-          if (CoordCon == 2){
-            conditionText = 'Stealing';
-          }
+          var conditionText = ConditionTexts[CoordCon];
           var typeText;
           if(CoordType == 'T'){
             typeText = 'Transformer';
