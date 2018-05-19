@@ -97,7 +97,7 @@ console.log(subID);
         var enabledLine = "#18A865";
         var disabledLine = "#181852";
         var criticalLine = "#ED1818";
-        var zeroLine = "#FFFFFF";
+        var zeroLine = "#000000";
         var lineColors = [disabledLine, enabledLine, criticalLine, zeroLine];
         
         var marker = {};
