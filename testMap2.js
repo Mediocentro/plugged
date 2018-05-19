@@ -97,7 +97,9 @@ console.log(subID);
         var enabledLine = "#18A865";
         var disabledLine = "#181852";
         var criticalLine = "#ED1818";
-
+        var zeroLine = "#FFFFFF";
+        var lineColors = [disabledLine, enabledLine, criticalLine, zeroLine];
+        
         var marker = {};
         var markerKeys = [];
 
@@ -207,9 +209,7 @@ console.log(subID);
           }
           if(marker[markerKeys[i]].parent == 0){
                 continue;}
-          var set = marker[markerKeys[i]].con == 0 ? disabledLine : enabledLine;
-          if(marker[markerKeys[i]].con == 2){
-                  set = criticalLine;}
+          var set = lineColors[marker[markerKeys[i]].con];
           var poly = new google.maps.Polyline({
             path: [marker[markerKeys[i]].getPosition(), marker[marker[markerKeys[i]].parent].getPosition()],
             strokeColor: set,
