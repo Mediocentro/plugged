@@ -170,7 +170,7 @@ console.log(subID);
             var CoordIcon = transformerIcon[CoordCon];
             var z = 4;
           }
-          else{
+          else if(CoordType == "S"){
                   var CoordIcon = image.substation;
                   var z = 5;}
 
